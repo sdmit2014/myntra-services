@@ -1,6 +1,7 @@
 package com.wecodee.myntra.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import com.wecodee.myntra.model.Register;
 import com.wecodee.myntra.service.RegisterService;
 
 @RequestMapping("/register")
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class RegisterController {
 	
