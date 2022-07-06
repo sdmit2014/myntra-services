@@ -20,6 +20,7 @@ public class RegisterService {
 	}
 	
     //get user
+//	New line added
 	public String getUsers(int id) {
 	 this.registerRepository.findAll();		
 	 return "Fetched All the records";
