@@ -20,6 +20,7 @@ public class RegisterService {
 	}
 	
     //get user
+//	NOOR USER ADDED
 //	New line added
 	public String getUsers(int id) {
 	 this.registerRepository.findAll();		
