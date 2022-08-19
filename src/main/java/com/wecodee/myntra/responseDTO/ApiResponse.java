@@ -24,6 +24,10 @@ public class ApiResponse<T> {
 	public static <T> ApiResponse<T> success(String message, T data) {
 		return new ApiResponse<T>(ResponseStatusCode.SUCCESS, message, data);
 	}
+	
+	public static <T> ApiResponse<T> success(String message) {
+		return new ApiResponse<T>(ResponseStatusCode.SUCCESS,message, null);
+	}
 
 	public static <T> ApiResponse<T> failure(String message) {
 		return new ApiResponse<T>(ResponseStatusCode.FAILED, message, null);

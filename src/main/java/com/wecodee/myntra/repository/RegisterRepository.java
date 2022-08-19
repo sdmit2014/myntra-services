@@ -6,5 +6,7 @@ import com.wecodee.myntra.model.Register;
 
 @Repository
 public interface RegisterRepository extends JpaRepository<Register, Integer> {
+	
+	public Register findByUserName(String userName);
 
 }

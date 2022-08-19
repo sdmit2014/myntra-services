@@ -1,5 +1,7 @@
 package com.wecodee.myntra.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MT_USER")
+@Table(name = "MT_REGISTER")
 public class Register {
 
 	@Id
@@ -19,6 +21,16 @@ public class Register {
 	private String password;
 
 	private String mobileNumber;
+
+	private String dateOfBirth;
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
 	public int getId() {
 		return id;
@@ -55,7 +67,7 @@ public class Register {
 	@Override
 	public String toString() {
 		return "Register [id=" + id + ", userName=" + userName + ", password=" + password + ", mobileNumber="
-				+ mobileNumber + "]";
+				+ mobileNumber + ", dateOfBirth=" + dateOfBirth + "]";
 	}
 
 }
