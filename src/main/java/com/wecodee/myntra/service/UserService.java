@@ -7,10 +7,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,18 +16,25 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wecodee.myntra.admin.dto.SearchFilterDTO;
 import com.wecodee.myntra.constant.ResponseMessage;
+import com.wecodee.myntra.model.MtImages;
+import com.wecodee.myntra.model.MtPayment;
 import com.wecodee.myntra.model.User;
+import com.wecodee.myntra.repository.MtImagesRepository;
+import com.wecodee.myntra.repository.MtPaymentRepository;
 import com.wecodee.myntra.repository.UserRepository;
 import com.wecodee.myntra.responseDTO.ApiResponse;
 import net.minidev.json.JSONObject;
 
 @Service
 public class UserService {
+
+	@Autowired
+	private MtImagesRepository mtImagesRepository;
+
+	@Autowired
+	private MtPaymentRepository mtPaymentRepository;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -52,6 +57,34 @@ public class UserService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ApiResponse.failure(ResponseMessage.OPERATION_FAILED.getMessage(), user);
+		}
+	}
+
+	// Save Images
+	public ApiResponse<MtImages> saveImages(MtImages mtImages) {
+		log.info("*** Inside user save image method ***");
+		try {
+			if (mtImages != null) {
+				this.mtImagesRepository.save(mtImages);
+			}
+			return ApiResponse.success(ResponseMessage.OPERATION_SUCCESS.getMessage(), mtImages);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ApiResponse.failure(ResponseMessage.OPERATION_FAILED.getMessage());
+		}
+	}
+
+	//Payment
+	public ApiResponse<MtPayment> savePayment(MtPayment mtPayment) {
+		log.info("*** Inside user payment method ***");
+		try {
+			if (mtPayment != null) {
+				this.mtPaymentRepository.save(mtPayment);
+			}
+			return ApiResponse.success(ResponseMessage.OPERATION_SUCCESS.getMessage(), mtPayment);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ApiResponse.failure(ResponseMessage.OPERATION_FAILED.getMessage());
 		}
 	}
 

@@ -1,7 +1,12 @@
 package com.wecodee.myntra.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +29,10 @@ public class User {
 	private String password;
 
 	private Integer recordVersion;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<MtImages> mtImages;
 
 	public String getUserId() {
 		return userId;
@@ -89,11 +98,19 @@ public class User {
 		this.recordVersion = recordVersion;
 	}
 
+	public List<MtImages> getMtImages() {
+		return mtImages;
+	}
+
+	public void setMtImages(List<MtImages> mtImages) {
+		this.mtImages = mtImages;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
 				+ ", phoneNumber=" + phoneNumber + ", countryCode=" + countryCode + ", password=" + password
-				+ ", recordVersion=" + recordVersion + "]";
+				+ ", recordVersion=" + recordVersion + ", mtImages=" + mtImages + "]";
 	}
 
 }

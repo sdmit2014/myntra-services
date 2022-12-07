@@ -22,15 +22,7 @@ public class Register {
 
 	private String mobileNumber;
 
-	private String dateOfBirth;
-
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+	private Date dateOfBirth;
 
 	public int getId() {
 		return id;
@@ -62,6 +54,14 @@ public class Register {
 
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override

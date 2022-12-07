@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wecodee.myntra.admin.dto.SearchFilterDTO;
+import com.wecodee.myntra.model.MtImages;
+import com.wecodee.myntra.model.MtPayment;
 import com.wecodee.myntra.model.User;
 import com.wecodee.myntra.responseDTO.ApiResponse;
 import com.wecodee.myntra.service.UserService;
@@ -60,5 +62,16 @@ public class UserController {
 		log.info("approved filterDto :" +filterDto);
 		return userService.getApprovedRecords(filterDto);
 	}
+	
+	@PostMapping("/saveimage")
+	public ApiResponse<MtImages> saveImages(@RequestBody MtImages mtImages ){
+		return userService.saveImages(mtImages);
+	}
+	
+	@PostMapping("/savepayment")
+	public ApiResponse<MtPayment> savePayment(@RequestBody MtPayment mtPayment){
+		return userService.savePayment(mtPayment);
+	}
+
 
 }

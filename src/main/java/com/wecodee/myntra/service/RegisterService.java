@@ -1,14 +1,9 @@
 package com.wecodee.myntra.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.wecodee.myntra.constant.ResponseMessage;
-import com.wecodee.myntra.constant.ResponseStatusCode;
 import com.wecodee.myntra.model.Register;
 import com.wecodee.myntra.repository.RegisterRepository;
 import com.wecodee.myntra.responseDTO.ApiResponse;
@@ -28,22 +23,19 @@ public class RegisterService {
 	}
 
 //------------------------------------------------------------------------------------------
-	
-	public ApiResponse<List<Register>> getAll(int id)
-	{
-	 List<Register> allUser =	this.registerRepository.findAll();
-	 if (allUser != null) {
+
+	public ApiResponse<List<Register>> getAll(int id) {
+		List<Register> allUser = this.registerRepository.findAll();
+		if (allUser != null) {
 			return ApiResponse.success(ResponseMessage.OPERATION_SUCCESS.getMessage(), allUser);
 		}
 		return ApiResponse.failure(ResponseMessage.OPERATION_FAILED.getMessage());
 	}
 
-	
 //	public String getUsers(int id) {
 //		this.registerRepository.findAll();
 //		return "Fetched All the records";
 //	}
-	
 
 //	// Save user
 //	public void registerUser(Register register) {

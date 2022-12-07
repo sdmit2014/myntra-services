@@ -5,6 +5,7 @@ public enum ResponseMessage {
 	OPERATION_SUCCESS("Operation Success"),
 	OPERATION_FAILED("Operation Failed"),
 	USER_NOT_FOUND("User not found"),
+	NO_RECORDS_FOUND("No records found"),
 
 	// Login Messages
 	LOGIN_SUCCESS("Login Successfull"), 
